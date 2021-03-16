@@ -1,0 +1,33 @@
+{% extends 'layout.html' %}
+
+
+{% block content %}
+
+{% load bootstrap_tags %}
+{% load bootstrap4 %}       {# import bootstrap4/bootstrap3 #}
+{% bootstrap_javascript jquery='full' %}  {# Embed Bootstrap JS+jQuery #}
+{{create.media}} {# Tarih seçici gerekli JS ve CSS ekler #}
+{# Display a form #}
+
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<form  class="form-horizontal" enctype="multipart/form-data" method="POST">
+    {% csrf_token %}
+   <div class="form">
+       <br><br>
+       <div class="col">
+
+               {{ create|as_bootstrap_horizontal }}
+
+       </div>
+   </div>
+        <br>
+    <br>
+<div>
+
+    <a href="{% url 'talep_views' %}"  type="submit" class="btn btn-primary">GERİ</a>
+    <button type="submit" class="btn btn-primary">KAYDET</button>
+</div>
+</form>
+
+
+{% endblock %}
